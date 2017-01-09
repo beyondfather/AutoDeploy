@@ -33,10 +33,13 @@ containerID=`docker run -d -p 7050:7050 -p 7051:7051 --name=vp \
 -e CORE_VM_ENDPOINT=unix:///var/run/docker.sock \
 hyperledger/fabric-peer:latest peer node start`
 
+while ((1))
+do
 read -p "In ./mychaincode,which directory to deploy?" deploydirectory
 read -p "deploy parameter \"Function\" " function
 read -p "deploy parameter \"Args\" " args
 docker exec -it $containerID peer chaincode deploy \
 -p github.com/mychaincode/$deploydirectory \
--c '{"Function":"'$function'", "Args": ['$args']}'
+-c '{"Function":"'$function'", "Args": ['$args']}';
+done
 
