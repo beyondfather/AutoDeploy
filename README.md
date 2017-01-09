@@ -15,3 +15,7 @@ docker tag hyperledger/fabric-peer:latest myfabric/lab:labtest
 輸入Function 名稱 如 init
 
 輸入Args 如 "a","150","b","240" (緊湊無空白 含雙引號 一次打完)
+
+之後每次chaincode 有異動 執行 ./inputchaincode.sh 就好
+
+一切都會重新部署
