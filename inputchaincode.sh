@@ -18,7 +18,7 @@ docker cp ./mychaincode $containerID:/opt/gopath/src/github.com/mychaincode
 echo "commit temp container"
 newimageID=`docker commit $containerID|cut -d : -f 2`
 
-echo "remove temp containe:"
+echo "remove temp containe"
 quiet=`docker rm -f $containerID`
 
 echo "tag to new image"
@@ -33,13 +33,22 @@ containerID=`docker run -d -p 7050:7050 -p 7051:7051 --name=vp \
 -e CORE_VM_ENDPOINT=unix:///var/run/docker.sock \
 hyperledger/fabric-peer:latest peer node start`
 
+
+
 while ((1))
 do
-read -p "In ./mychaincode,which directory to deploy?" deploydirectory
-read -p "deploy parameter \"Function\" " function
-read -p "deploy parameter \"Args\" " args
-docker exec -it $containerID peer chaincode deploy \
--p github.com/mychaincode/$deploydirectory \
--c '{"Function":"'$function'", "Args": ['$args']}';
+read -p "In ./mychaincode,which directory to deploy ? :" deploydirectory
+read -p "what do you use lang (golang) : " lang
+read -p "deploy parameter \"Function\" : " function
+read -p "deploy parameter \"Args\" : " args
+if [ "${lang}" == "java" ] ; then
+	docker exec -it $containerID peer chaincode deploy -l java \
+	-p ../../mychaincode/$deploydirectory \
+	-c '{"Function":"'$function'", "Args": ['$args']}';
+else
+	docker exec -it $containerID peer chaincode deploy  \
+	-p github.com/mychaincode/$deploydirectory \
+	-c '{"Function":"'$function'", "Args": ['$args']}';
+fi
 done
 
