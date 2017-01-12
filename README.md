@@ -43,3 +43,5 @@ docker tag hyperledger/fabric-peer:latest myfabric/lab:labtest
 自由選擇 幾個節點 和 *非驗證節點
 
 *選擇 membersvrc 使用
+
+如 ./inputchaincode.sh -f setting.txt -n pbft 
