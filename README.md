@@ -22,11 +22,9 @@ docker tag hyperledger/fabric-peer:latest myfabric/lab:labtest
 
 ///////////////////
 
-增加
+增加 參數
 
-./inputchaincode2.sh 
-
--f 載入設定檔
+-f 載入設定檔 (setting.txt)
 
 -l chaincode語言
 
