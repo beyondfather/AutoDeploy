@@ -1,0 +1,165 @@
+[36m15:40:51.095 [logging] LoggingInit -> DEBU 001[0m Setting default logging level to DEBUG for command 'node'
+[36m15:40:51.097 [eventhub_producer] AddEventType -> DEBU 002[0m registering BLOCK
+[36m15:40:51.097 [eventhub_producer] AddEventType -> DEBU 003[0m registering CHAINCODE
+[36m15:40:51.098 [eventhub_producer] AddEventType -> DEBU 004[0m registering REJECTION
+[36m15:40:51.098 [eventhub_producer] AddEventType -> DEBU 005[0m registering REGISTER
+15:40:51.098 [nodeCmd] serve -> INFO 006[0m Security enabled status: false
+15:40:51.098 [nodeCmd] serve -> INFO 007[0m Privacy enabled status: false
+15:40:51.098 [eventhub_producer] start -> INFO 008[0m event processor started
+[36m15:40:51.098 [db] open -> DEBU 009[0m Is db path [/var/hyperledger/production/db] empty [true]
+15:40:51.099 [db] open -> INFO 00a[0m Setting rocksdb maxLogFileSize to 10485760
+15:40:51.099 [db] open -> INFO 00b[0m Setting rocksdb keepLogFileNum to 10
+15:40:51.415 [chaincode] NewChaincodeSupport -> INFO 00c[0m Chaincode support using peerAddress: 172.17.0.4:7051
+[36m15:40:51.416 [chaincode] NewChaincodeSupport -> DEBU 00d[0m Turn off keepalive(value 0)
+15:40:51.416 [sysccapi] RegisterSysCC -> INFO 00e[0m system chaincode (noop,github.com/hyperledger/fabric/bddtests/syschaincode/noop) disabled
+[36m15:40:51.417 [nodeCmd] serve -> DEBU 00f[0m Running as validating peer - making genesis block if needed
+15:40:51.417 [state] loadConfig -> INFO 010[0m Loading configurations...
+15:40:51.417 [state] loadConfig -> INFO 011[0m Configurations loaded. stateImplName=[buckettree], stateImplConfigs=map[numBuckets:%!s(int=1000003) maxGroupingAtEachLevel:%!s(int=5) bucketCacheSize:%!s(int=100)], deltaHistorySize=[500]
+15:40:51.418 [state] NewState -> INFO 012[0m Initializing state implementation [buckettree]
+15:40:51.418 [buckettree] initConfig -> INFO 013[0m configs passed during initialization = map[string]interface {}{"numBuckets":1000003, "maxGroupingAtEachLevel":5, "bucketCacheSize":100}
+15:40:51.418 [buckettree] initConfig -> INFO 014[0m Initializing bucket tree state implemetation with configurations &{maxGroupingAtEachLevel:5 lowestLevel:9 levelToNumBucketsMap:map[2:13 7:40001 6:8001 3:65 0:1 1:3 9:1000003 4:321 8:200001 5:1601] hashFunc:0xab4dc0}
+15:40:51.418 [buckettree] newBucketCache -> INFO 015[0m Constructing bucket-cache with max bucket cache size = [100] MBs
+15:40:51.418 [buckettree] loadAllBucketNodesFromDB -> INFO 016[0m Loaded buckets data in cache. Total buckets in DB = [0]. Total cache size:=0
+15:40:51.419 [genesis] func1 -> INFO 017[0m Creating genesis block.
+[36m15:40:51.419 [state] GetHash -> DEBU 018[0m Enter - GetHash()
+[36m15:40:51.419 [buckettree] ComputeCryptoHash -> DEBU 019[0m Enter - ComputeCryptoHash()
+[36m15:40:51.419 [buckettree] ComputeCryptoHash -> DEBU 01a[0m Returing existing crypto-hash as recomputation not required
+[36m15:40:51.419 [state] GetHash -> DEBU 01b[0m Exit - GetHash()
+[36m15:40:51.419 [indexes] addIndexDataForPersistence -> DEBU 01c[0m Indexing block number [0] by hash = [46b9dd2b0ba88d13233b3feb743eeb243fcd52ea62b81b82b50c27646ed5762fd75dc4ddd8c0f200cb05019d67b592f6fc821c49479ab48640292eacb3b7c4be]
+[36m15:40:51.419 [state] AddChangesForPersistence -> DEBU 01d[0m state.addChangesForPersistence()...start
+[36m15:40:51.419 [state] AddChangesForPersistence -> DEBU 01e[0m Adding state-delta corresponding to block number[0]
+[36m15:40:51.419 [state] AddChangesForPersistence -> DEBU 01f[0m Not deleting previous state-delta. Block number [0] is smaller than historyStateDeltaSize [500]
+[36m15:40:51.419 [state] AddChangesForPersistence -> DEBU 020[0m state.addChangesForPersistence()...finished
+[36m15:40:51.420 [ledger] resetForNextTxGroup -> DEBU 021[0m resetting ledger state for next transaction batch
+[36m15:40:51.420 [buckettree] ClearWorkingSet -> DEBU 022[0m Enter - ClearWorkingSet()
+[36m15:40:51.420 [nodeCmd] serve -> DEBU 023[0m Running as validating peer - installing consensus 
+[36m15:40:51.420 [peer] initDiscovery -> DEBU 024[0m Retrieved discovery list from disk: []
+15:40:51.421 [consensus/controller] NewConsenter -> INFO 025[0m Creating default consensus plugin (noops)
+[36m15:40:51.421 [consensus/noops] newNoops -> DEBU 026[0m Creating a NOOPS object
+15:40:51.422 [consensus/noops] newNoops -> INFO 027[0m NOOPS consensus type = *noops.Noops
+15:40:51.422 [consensus/noops] newNoops -> INFO 028[0m NOOPS block size = 500
+15:40:51.422 [consensus/noops] newNoops -> INFO 029[0m NOOPS block wait = 1s
+[36m15:40:51.422 [peer] chatWithSomePeers -> DEBU 02a[0m Starting up the first peer of a new network
+[36m15:40:51.423 [consensus/statetransfer] verifyAndRecoverBlockchain -> DEBU 02b[0m Validating existing blockchain, highest validated block is 0, valid through 0
+15:40:51.423 [consensus/statetransfer] blockThread -> INFO 02c[0m Validated blockchain to the genesis block
+[36m15:40:51.423 [consensus/handler] 1 -> DEBU 02d[0m Starting up message thread for consenter
+15:40:51.423 [nodeCmd] serve -> INFO 02e[0m Starting peer with ID=name:"jdoe" , network ID=dev, address=172.17.0.4:7051, rootnodes=, validator=true
+[36m15:40:51.423 [peer] ensureConnected -> DEBU 02f[0m Starting Peer reconnect service (touch service), with period = 6s
+15:40:51.424 [rest] StartOpenchainRESTServer -> INFO 030[0m Initializing the REST service on 0.0.0.0:7050, TLS is disabled.
+[36m15:40:57.427 [peer] ensureConnected -> DEBU 031[0m Touch service indicates no dropped connections
+[36m15:40:57.428 [peer] ensureConnected -> DEBU 032[0m Connected to: []
+[36m15:40:57.428 [peer] ensureConnected -> DEBU 033[0m Discovery knows about: []
+[36m15:41:03.426 [peer] ensureConnected -> DEBU 034[0m Touch service indicates no dropped connections
+[36m15:41:03.426 [peer] ensureConnected -> DEBU 035[0m Connected to: []
+[36m15:41:03.426 [peer] ensureConnected -> DEBU 036[0m Discovery knows about: []
+[36m15:41:09.428 [peer] ensureConnected -> DEBU 037[0m Touch service indicates no dropped connections
+[36m15:41:09.428 [peer] ensureConnected -> DEBU 038[0m Connected to: []
+[36m15:41:09.428 [peer] ensureConnected -> DEBU 039[0m Discovery knows about: []
+[36m15:41:15.427 [peer] ensureConnected -> DEBU 03a[0m Touch service indicates no dropped connections
+[36m15:41:15.428 [peer] ensureConnected -> DEBU 03b[0m Connected to: []
+[36m15:41:15.428 [peer] ensureConnected -> DEBU 03c[0m Discovery knows about: []
+[36m15:41:21.429 [peer] ensureConnected -> DEBU 03d[0m Touch service indicates no dropped connections
+[36m15:41:21.429 [peer] ensureConnected -> DEBU 03e[0m Connected to: []
+[36m15:41:21.429 [peer] ensureConnected -> DEBU 03f[0m Discovery knows about: []
+[36m15:41:27.424 [peer] ensureConnected -> DEBU 040[0m Touch service indicates no dropped connections
+[36m15:41:27.424 [peer] ensureConnected -> DEBU 041[0m Connected to: []
+[36m15:41:27.424 [peer] ensureConnected -> DEBU 042[0m Discovery knows about: []
+[36m15:41:33.427 [peer] ensureConnected -> DEBU 043[0m Touch service indicates no dropped connections
+[36m15:41:33.428 [peer] ensureConnected -> DEBU 044[0m Connected to: []
+[36m15:41:33.428 [peer] ensureConnected -> DEBU 045[0m Discovery knows about: []
+[36m15:41:39.425 [peer] ensureConnected -> DEBU 046[0m Touch service indicates no dropped connections
+[36m15:41:39.425 [peer] ensureConnected -> DEBU 047[0m Connected to: []
+[36m15:41:39.426 [peer] ensureConnected -> DEBU 048[0m Discovery knows about: []
+[36m15:41:45.425 [peer] ensureConnected -> DEBU 049[0m Touch service indicates no dropped connections
+[36m15:41:45.425 [peer] ensureConnected -> DEBU 04a[0m Connected to: []
+[36m15:41:45.425 [peer] ensureConnected -> DEBU 04b[0m Discovery knows about: []
+[36m15:41:51.428 [peer] ensureConnected -> DEBU 04c[0m Touch service indicates no dropped connections
+[36m15:41:51.428 [peer] ensureConnected -> DEBU 04d[0m Connected to: []
+[36m15:41:51.428 [peer] ensureConnected -> DEBU 04e[0m Discovery knows about: []
+[36m15:41:57.428 [peer] ensureConnected -> DEBU 04f[0m Touch service indicates no dropped connections
+[36m15:41:57.428 [peer] ensureConnected -> DEBU 050[0m Connected to: []
+[36m15:41:57.428 [peer] ensureConnected -> DEBU 051[0m Discovery knows about: []
+[36m15:42:03.428 [peer] ensureConnected -> DEBU 052[0m Touch service indicates no dropped connections
+[36m15:42:03.428 [peer] ensureConnected -> DEBU 053[0m Connected to: []
+[36m15:42:03.428 [peer] ensureConnected -> DEBU 054[0m Discovery knows about: []
+[36m15:42:09.424 [peer] ensureConnected -> DEBU 055[0m Touch service indicates no dropped connections
+[36m15:42:09.424 [peer] ensureConnected -> DEBU 056[0m Connected to: []
+[36m15:42:09.424 [peer] ensureConnected -> DEBU 057[0m Discovery knows about: []
+[36m15:42:15.425 [peer] ensureConnected -> DEBU 058[0m Touch service indicates no dropped connections
+[36m15:42:15.425 [peer] ensureConnected -> DEBU 059[0m Connected to: []
+[36m15:42:15.425 [peer] ensureConnected -> DEBU 05a[0m Discovery knows about: []
+[36m15:42:21.428 [peer] ensureConnected -> DEBU 05b[0m Touch service indicates no dropped connections
+[36m15:42:21.428 [peer] ensureConnected -> DEBU 05c[0m Connected to: []
+[36m15:42:21.428 [peer] ensureConnected -> DEBU 05d[0m Discovery knows about: []
+[36m15:42:27.428 [peer] ensureConnected -> DEBU 05e[0m Touch service indicates no dropped connections
+[36m15:42:27.428 [peer] ensureConnected -> DEBU 05f[0m Connected to: []
+[36m15:42:27.428 [peer] ensureConnected -> DEBU 060[0m Discovery knows about: []
+[36m15:42:33.428 [peer] ensureConnected -> DEBU 061[0m Touch service indicates no dropped connections
+[36m15:42:33.428 [peer] ensureConnected -> DEBU 062[0m Connected to: []
+[36m15:42:33.428 [peer] ensureConnected -> DEBU 063[0m Discovery knows about: []
+[36m15:42:39.425 [peer] ensureConnected -> DEBU 064[0m Touch service indicates no dropped connections
+[36m15:42:39.426 [peer] ensureConnected -> DEBU 065[0m Connected to: []
+[36m15:42:39.426 [peer] ensureConnected -> DEBU 066[0m Discovery knows about: []
+[36m15:42:45.425 [peer] ensureConnected -> DEBU 067[0m Touch service indicates no dropped connections
+[36m15:42:45.425 [peer] ensureConnected -> DEBU 068[0m Connected to: []
+[36m15:42:45.425 [peer] ensureConnected -> DEBU 069[0m Discovery knows about: []
+[36m15:42:51.424 [peer] ensureConnected -> DEBU 06a[0m Touch service indicates no dropped connections
+[36m15:42:51.424 [peer] ensureConnected -> DEBU 06b[0m Connected to: []
+[36m15:42:51.424 [peer] ensureConnected -> DEBU 06c[0m Discovery knows about: []
+[36m15:42:57.424 [peer] ensureConnected -> DEBU 06d[0m Touch service indicates no dropped connections
+[36m15:42:57.424 [peer] ensureConnected -> DEBU 06e[0m Connected to: []
+[36m15:42:57.424 [peer] ensureConnected -> DEBU 06f[0m Discovery knows about: []
+[36m15:43:03.426 [peer] ensureConnected -> DEBU 070[0m Touch service indicates no dropped connections
+[36m15:43:03.426 [peer] ensureConnected -> DEBU 071[0m Connected to: []
+[36m15:43:03.426 [peer] ensureConnected -> DEBU 072[0m Discovery knows about: []
+[36m15:43:09.424 [peer] ensureConnected -> DEBU 073[0m Touch service indicates no dropped connections
+[36m15:43:09.424 [peer] ensureConnected -> DEBU 074[0m Connected to: []
+[36m15:43:09.424 [peer] ensureConnected -> DEBU 075[0m Discovery knows about: []
+[36m15:43:15.424 [peer] ensureConnected -> DEBU 076[0m Touch service indicates no dropped connections
+[36m15:43:15.424 [peer] ensureConnected -> DEBU 077[0m Connected to: []
+[36m15:43:15.424 [peer] ensureConnected -> DEBU 078[0m Discovery knows about: []
+[36m15:43:21.424 [peer] ensureConnected -> DEBU 079[0m Touch service indicates no dropped connections
+[36m15:43:21.424 [peer] ensureConnected -> DEBU 07a[0m Connected to: []
+[36m15:43:21.424 [peer] ensureConnected -> DEBU 07b[0m Discovery knows about: []
+[36m15:43:27.424 [peer] ensureConnected -> DEBU 07c[0m Touch service indicates no dropped connections
+[36m15:43:27.424 [peer] ensureConnected -> DEBU 07d[0m Connected to: []
+[36m15:43:27.424 [peer] ensureConnected -> DEBU 07e[0m Discovery knows about: []
+[36m15:43:33.427 [peer] ensureConnected -> DEBU 07f[0m Touch service indicates no dropped connections
+[36m15:43:33.427 [peer] ensureConnected -> DEBU 080[0m Connected to: []
+[36m15:43:33.427 [peer] ensureConnected -> DEBU 081[0m Discovery knows about: []
+[36m15:43:39.429 [peer] ensureConnected -> DEBU 082[0m Touch service indicates no dropped connections
+[36m15:43:39.429 [peer] ensureConnected -> DEBU 083[0m Connected to: []
+[36m15:43:39.429 [peer] ensureConnected -> DEBU 084[0m Discovery knows about: []
+[36m15:43:45.429 [peer] ensureConnected -> DEBU 085[0m Touch service indicates no dropped connections
+[36m15:43:45.429 [peer] ensureConnected -> DEBU 086[0m Connected to: []
+[36m15:43:45.429 [peer] ensureConnected -> DEBU 087[0m Discovery knows about: []
+[36m15:43:51.427 [peer] ensureConnected -> DEBU 088[0m Touch service indicates no dropped connections
+[36m15:43:51.427 [peer] ensureConnected -> DEBU 089[0m Connected to: []
+[36m15:43:51.427 [peer] ensureConnected -> DEBU 08a[0m Discovery knows about: []
+[36m15:43:57.424 [peer] ensureConnected -> DEBU 08b[0m Touch service indicates no dropped connections
+[36m15:43:57.425 [peer] ensureConnected -> DEBU 08c[0m Connected to: []
+[36m15:43:57.425 [peer] ensureConnected -> DEBU 08d[0m Discovery knows about: []
+[36m15:44:03.424 [peer] ensureConnected -> DEBU 08e[0m Touch service indicates no dropped connections
+[36m15:44:03.424 [peer] ensureConnected -> DEBU 08f[0m Connected to: []
+[36m15:44:03.424 [peer] ensureConnected -> DEBU 090[0m Discovery knows about: []
+[36m15:44:09.427 [peer] ensureConnected -> DEBU 091[0m Touch service indicates no dropped connections
+[36m15:44:09.427 [peer] ensureConnected -> DEBU 092[0m Connected to: []
+[36m15:44:09.427 [peer] ensureConnected -> DEBU 093[0m Discovery knows about: []
+[36m15:44:15.427 [peer] ensureConnected -> DEBU 094[0m Touch service indicates no dropped connections
+[36m15:44:15.427 [peer] ensureConnected -> DEBU 095[0m Connected to: []
+[36m15:44:15.427 [peer] ensureConnected -> DEBU 096[0m Discovery knows about: []
+[36m15:44:21.426 [peer] ensureConnected -> DEBU 097[0m Touch service indicates no dropped connections
+[36m15:44:21.426 [peer] ensureConnected -> DEBU 098[0m Connected to: []
+[36m15:44:21.426 [peer] ensureConnected -> DEBU 099[0m Discovery knows about: []
+[36m15:44:27.427 [peer] ensureConnected -> DEBU 09a[0m Touch service indicates no dropped connections
+[36m15:44:27.427 [peer] ensureConnected -> DEBU 09b[0m Connected to: []
+[36m15:44:27.427 [peer] ensureConnected -> DEBU 09c[0m Discovery knows about: []
+[36m15:44:33.426 [peer] ensureConnected -> DEBU 09d[0m Touch service indicates no dropped connections
+[36m15:44:33.426 [peer] ensureConnected -> DEBU 09e[0m Connected to: []
+[36m15:44:33.427 [peer] ensureConnected -> DEBU 09f[0m Discovery knows about: []
+[36m15:44:39.427 [peer] ensureConnected -> DEBU 0a0[0m Touch service indicates no dropped connections
+[36m15:44:39.427 [peer] ensureConnected -> DEBU 0a1[0m Connected to: []
+[36m15:44:39.427 [peer] ensureConnected -> DEBU 0a2[0m Discovery knows about: []
+[36m15:44:45.428 [peer] ensureConnected -> DEBU 0a3[0m Touch service indicates no dropped connections
+[36m15:44:45.428 [peer] ensureConnected -> DEBU 0a4[0m Connected to: []
+[36m15:44:45.428 [peer] ensureConnected -> DEBU 0a5[0m Discovery knows about: []

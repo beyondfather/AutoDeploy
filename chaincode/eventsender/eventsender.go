@@ -52,7 +52,7 @@ func (t *EventSender) Invoke(stub shim.ChaincodeStubInterface, function string, 
 	}
 	noevts, _ := strconv.Atoi(string(b))
 
-	tosend := "Event " + string(b)
+	tosend := "Event " + string(b) //"Event 0"
 	for _, s := range args {
 		tosend = tosend + "," + s
 	}

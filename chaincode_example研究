@@ -1,0 +1,55 @@
+chaincode01
+deploy 4個參數
+全域 A Aval B Bval
+重點 取得交易時間
+
+chaincode02
+deploy 4個參數
+A Aval B Bval
+存取刪值
+
+chaincode03
+deploy 2個參數
+A Aval
+故意出錯 query 不能PutState
+
+chaincode04
+deploy 2個參數
+event eventVal
+重點 用名稱示範呼叫另一個chaincode
+引用 "github.com/hyperledger/fabric/core/util"
+invokeArgs := util.ToChaincodeArgs("函數", "a", "b", "10") //取得
+response, err := stub.InvokeChaincode("chaincode_name", invokeArgs)
+
+chaincode05
+deploy 2個參數
+sum sumVal
+重點 用路徑示範呼叫另一個chaincode
+引用 "github.com/hyperledger/fabric/core/util"
+queryArgs := util.ToChaincodeArgs(f, "a")
+response, err := stub.QueryChaincode("chaincodeURL", queryArgs)
+
+eventsender
+deploy 忽視參數
+其意義不明 可能是發送事件
+stub.SetEvent "Event 數字"
+
+map
+deploy 忽視參數
+重點 選擇適當函數處理
+RangeQueryState 取得key list
+
+passthru
+deploy 忽視參數
+chaincode 轉發
+
+raba_tcerts_no_attrs
+shim.ColumnDefinition_BYTES
+shim.ColumnDefinition_STRING
+shim.GetCallerMetadata()
+t.addRole()
+t.write
+t.read(stub, args)
+
+
+
