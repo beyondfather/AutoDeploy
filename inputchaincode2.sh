@@ -3,6 +3,8 @@
 while [[ $# -gt 1 ]]
 do
 key="$1"
+number=4
+mode="noops"
 
 case $key in
     -f)
@@ -25,8 +27,12 @@ case $key in
     number="$2"
     shift # past argument
     ;;
-    -e)
+    --event)
     event=true
+    ;;
+    -e)
+    evn="$evn -e $2 "
+    shift
     ;;
     *)
             # unknown option
@@ -97,25 +103,76 @@ docker tag $newimageID hyperledger/fabric-baseimage:latest
 
 
 
+if [[ $mode == "noops" ]] ; then
 
-echo -e "\033[36m [run hyperledger/fabric-peer:latest] \033[0m"
-containerID=`docker run -idt -p 7050:7050 -p 7051:7051 --name=vp0 \
--v /var/run/docker.sock:/var/run/docker.sock \
--e CORE_VM_ENDPOINT=unix:///var/run/docker.sock \
--e CORE_LOGGING_LEVEL=debug \
-hyperledger/fabric-peer:latest`
-echo "The new image ID :" $containerID
-
-
-
-echo -e "\033[36m [run peer node] \033[0m"
-peerIP=`docker exec -it $containerID ifconfig |grep Bcast | awk '{print $2}' | sed 's/addr://'|sed 's/\./\\./g'`
-( docker exec -t $containerID /bin/bash -c "export CORE_PEER_ADDRESS="$peerIP":7051 && peer node start" >log-vp0 ) &
-echo -e "\033[33m [*]\033[0m if you whan \033[33mwatch\033[0m log ,please open new tty run \033[33m\`cat log-vp0\`\033[0m "
+    echo -e "\033[36m [run hyperledger/fabric-peer:latest] \033[0m"
+    containerID=`docker run -idt -p 7050:7050 -p 7051:7051 --name=vp0 \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -e CORE_VM_ENDPOINT=unix:///var/run/docker.sock \
+    -e CORE_LOGGING_LEVEL=debug  $evn \
+    hyperledger/fabric-peer:latest`
+    echo "The new image ID :" $containerID
 
 
 
+    echo -e "\033[36m [run peer node] \033[0m"
+    peerIP=`docker exec -it $containerID ifconfig |grep Bcast | awk '{print $2}' | sed 's/addr://'|sed 's/\./\\./g'`
+    ( docker exec -t $containerID /bin/bash -c "export CORE_PEER_ADDRESS="$peerIP":7051 && peer node start" >log-vp0 ) &
+    echo -e "\033[33m [*]\033[0m if you whan \033[33mwatch\033[0m log ,please open new tty run \033[33m\`cat log-vp0\`\033[0m ";
 
+elif [[ $mode == "pbft" ]] ; then
+    count=0
+    
+    echo -e "\033[36m [run hyperledger/fabric-peer:latest] \033[0m"
+    containerID=`docker run -idt -p $(( count * 1000 + 7050 )):7050 -p $(( count * 1000 + 7051 )):7051 \
+        --name=vp$count \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -e CORE_VM_ENDPOINT=unix:///var/run/docker.sock \
+        -e CORE_LOGGING_LEVEL=debug \
+        -e CORE_PEER_ID=vp0 \
+        -e CORE_PEER_NETWORKID=dev \
+        -e CORE_PEER_VALIDATOR_CONSENSUS_PLUGIN=pbft \
+        -e CORE_PEER_ADDRESSAUTODETECT=true \
+        -e CORE_PBFT_GENERAL_N=$(( number )) \
+        -e CORE_PBFT_GENERAL_MODE=batch \
+        -e CORE_PBFT_GENERAL_TIMEOUT_REQUEST=10s $evn \
+        hyperledger/fabric-peer:latest`
+    echo "The new image vp$count ID :" $containerID
+    peerIP=`docker exec -it $containerID ifconfig |grep Bcast | awk '{print $2}' | sed 's/addr://'|sed 's/\./\\./g'`
+    ( docker exec -t $containerID /bin/bash -c "export CORE_PEER_ADDRESS="$peerIP":7051 && peer node start" >log-vp0 ) &
+    echo -e "\033[33m [*]\033[0m if you whan \033[33mwatch\033[0m log ,please open new tty run \033[33m\`cat log-vp$count\`\033[0m ";
+    number=`expr $number - 1 `
+    while [[ $count -lt $number ]]; do
+        count=`expr $count + 1 `
+
+        vp=`docker run -idt -p $(( count * 1000 + 7050 )):7050 -p $(( count * 1000 + 7051 )):7051 \
+            --name=vp$count \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -e CORE_VM_ENDPOINT=unix:///var/run/docker.sock \
+            -e CORE_LOGGING_LEVEL=debug \
+            -e CORE_PEER_ID=vp$count \
+            -e CORE_PEER_NETWORKID=dev \
+            -e CORE_PEER_VALIDATOR_CONSENSUS_PLUGIN=pbft \
+            -e CORE_PEER_ADDRESSAUTODETECT=true \
+            -e CORE_PBFT_GENERAL_N=$(( number + 1 )) \
+            -e CORE_PBFT_GENERAL_MODE=batch \
+            -e CORE_PBFT_GENERAL_TIMEOUT_REQUEST=10s \
+            -e CORE_PEER_DISCOVERY_ROOTNODE=$peerIP:7051 $evn \
+            hyperledger/fabric-peer:latest`
+        echo "The new image vp$count ID :" $vp
+        vpSelfIP=`docker exec -it $vp ifconfig |grep Bcast | awk '{print $2}' | sed 's/addr://'|sed 's/\./\\./g'`
+        ( docker exec -t $vp /bin/bash -c "export CORE_PEER_ADDRESS="$vpSelfIP":7051 && peer node start" >`echo log-vp$count` ) &
+        echo -e "\033[33m [*]\033[0m if you whan \033[33mwatch\033[0m log ,please open new tty run \033[33m\`cat log-vp$count\`\033[0m ";
+    done
+    sleep $(($count * 3))
+elif [[ $mode == "--peer-chaincodedev" ]]; then
+    echo -e "\033[31m [error] \033[0m Not finish " >& 2
+    exit;
+else
+    echo -e "\033[31m [error] \033[0m Can't find mode " >& 2
+    exit;
+
+fi
 
 
 
@@ -139,14 +196,15 @@ for var in `cat $settingfile` ; do
         deploydirectory=`echo $var |grep deploydirectory::|awk -F"::" '{print $2}'`;
         echo "deploydirectory : "$deploydirectory
     else
-        read -p "In ./mychaincode,which directory to deploy ? :" deploydirectory;
+        while read -p "In ./mychaincode,which directory to deploy ? :" deploydirectory;do if [[ $deploydirectory != "" ]] ; then break; fi done
     fi
 
     
     lang=`echo $var |grep lang::|awk -F"::" '{print $2}'`;
     
     if [[ $lang == "" ]] ; then
-        read -p "what do you use lang (golang) : " lang
+        
+        while read -p "what do you use lang (golang) : " lang ;do if [[ $lang != "" ]] ; then break; fi done
     else
         echo "lang : "$lang
     fi
@@ -155,7 +213,8 @@ for var in `cat $settingfile` ; do
     function=`echo $var |grep deployfunction::|awk -F"::" '{print $2}'`;
     
     if [[ $function == "" ]] ; then
-        read -p "what do you use function : " function
+        
+        while read -p "what do you use function : " function ;do if [[ $function != "" ]] ; then break; fi done
     else
         echo "function : "$function
     fi
@@ -164,14 +223,15 @@ for var in `cat $settingfile` ; do
     args=`echo $var |grep deployargs::|awk -F"::" '{print $2}'`;
     
     if [[ $args == "" ]] ; then
-        read -p "what do you use args : " args
+        
+        while read -p "what do you use args : " args ;do if [[ $args != "" ]] ; then break; fi done
     else
         echo "args : "$args
     fi
     
 
 
-    if [ "${lang}" == "java" ] ; then
+    if [[ "${lang}" == "java" ]] ; then
         #JAVA lang run here
         docker exec -it $containerID /bin/bash -c "peer chaincode deploy \\
         -l java \\
@@ -190,17 +250,17 @@ done
 
 while ((1))
 do
-    read -p "In ./mychaincode,which directory to deploy ? :" deploydirectory
     
-    if [ "${deploydirectory}" == "" ] ;then continue ; fi
-    if [ $xlang == "" ] ; then
-        read -p "what do you use lang (golang) : " lang ;
+    while read -p "In ./mychaincode,which directory to deploy ? :" deploydirectory ;do if [[ $deploydirectory != "" ]] ; then break; fi done
+    if [[ $xlang == "" ]] ; then
+        while read -p "what do you use lang (golang) : " lang  ;do if [[ $lang != "" ]] ; then break; fi done
     else
         lang=$xlang ;
     fi
 
-    read -p "deploy parameter \"Function\" : " function
-    read -p "deploy parameter \"Args\" : " args
+    while read -p "deploy parameter \"Function\" : " function  ;do if [[ $function != "" ]] ; then break; fi done
+    while read -p "deploy parameter \"Args\" : " args  ;do if [[ $args != "" ]] ; then break; fi done
+    
     if [ "${lang}" == "java" ] ; then
         #JAVA lang run here
         docker exec -it $containerID /bin/bash -c "peer chaincode deploy \\

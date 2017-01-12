@@ -30,12 +30,18 @@ docker tag hyperledger/fabric-peer:latest myfabric/lab:labtest
 
 -l chaincode語言
 
--i 來源image
+-i 來源image 
+
+-m 選擇mode pbft,noops
+
+-e 設定環境屬性
+
+-n pbft節點數量
 
 預計目標
 
-自由選擇 pbft,noops,--peer-chaincodedev
+自由選擇 pbft,noops, *--peer-chaincodedev
 
-自由選擇 幾個節點 和 非驗證節點
+自由選擇 幾個節點 和 *非驗證節點
 
-自由選擇 membersvrc 使用
+*選擇 membersvrc 使用
