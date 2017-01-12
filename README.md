@@ -19,3 +19,14 @@ docker tag hyperledger/fabric-peer:latest myfabric/lab:labtest
 之後每次chaincode 有異動 執行 ./inputchaincode.sh 就好
 
 一切都會重新部署
+
+///////////////////
+增加
+./inputchaincode2.sh 
+-f 載入設定檔
+-l chaincode語言
+-i 來源image
+預計目標
+自由選擇 pbft,noops,--peer-chaincodedev
+自由選擇 幾個節點 和 非驗證節點
+自由選擇 membersvrc 使用
