@@ -1,10 +1,28 @@
 #/bin/bash
+echo -e "\033[36m [remove old vp container] \033[0m"
 
+for  kill in `docker ps -a |grep 'vp'|awk '{print $1}'` ; do
+    
+    docker rm -f $kill;
+done
+for  kill in `docker ps -a |grep 'dev'|awk '{print $1}'` ; do
+    
+    docker rm -f $kill;
+done
+
+echo -e "\033[36m [remove old image] \033[0m"
+docker rmi hyperledger/fabric-peer:latest
+docker rmi hyperledger/fabric-baseimage:latest
+docker images |awk '{print $1}'|grep 'dev'|xargs docker rmi
+
+
+
+number=4
+mode="noops"
 while [[ $# -gt 1 ]]
 do
 key="$1"
-number=4
-mode="noops"
+
 
 case $key in
     -f)
@@ -57,21 +75,6 @@ if [[ $image == "" ]] ; then
 else
     Aimage=$image;
 fi
-echo -e "\033[36m [remove old vp container] \033[0m"
-
-for  kill in `docker ps -a |grep 'vp'|awk '{print $1}'` ; do
-    
-    docker rm -f $kill;
-done
-for  kill in `docker ps -a |grep 'dev'|awk '{print $1}'` ; do
-    
-    docker rm -f $kill;
-done
-
-echo -e "\033[36m [remove old image] \033[0m"
-docker rmi hyperledger/fabric-peer:latest
-docker rmi hyperledger/fabric-baseimage:latest
-docker images |awk '{print $1}'|grep 'dev'|xargs docker rmi
 
 
 echo -e "\033[36m [run temp container] \033[0m"
@@ -170,6 +173,7 @@ elif [[ $mode == "--peer-chaincodedev" ]]; then
     exit;
 else
     echo -e "\033[31m [error] \033[0m Can't find mode " >& 2
+    echo "mode : "$mode
     exit;
 
 fi
