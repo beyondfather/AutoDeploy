@@ -1,0 +1,284 @@
+[36m13:18:50.443 [logging] LoggingInit -> DEBU 001[0m Setting default logging level to DEBUG for command 'node'
+13:18:50.443 [peer] func1 -> INFO 002[0m Auto detected peer address: 172.17.0.5:7051
+13:18:50.444 [peer] func1 -> INFO 003[0m Auto detected peer address: 172.17.0.5:7051
+[36m13:18:50.447 [eventhub_producer] AddEventType -> DEBU 004[0m registering BLOCK
+[36m13:18:50.447 [eventhub_producer] AddEventType -> DEBU 005[0m registering CHAINCODE
+[36m13:18:50.447 [eventhub_producer] AddEventType -> DEBU 006[0m registering REJECTION
+[36m13:18:50.447 [eventhub_producer] AddEventType -> DEBU 007[0m registering REGISTER
+13:18:50.447 [nodeCmd] serve -> INFO 008[0m Security enabled status: false
+13:18:50.447 [nodeCmd] serve -> INFO 009[0m Privacy enabled status: false
+13:18:50.448 [eventhub_producer] start -> INFO 00a[0m event processor started
+[36m13:18:50.448 [db] open -> DEBU 00b[0m Is db path [/var/hyperledger/production/db] empty [true]
+13:18:50.449 [db] open -> INFO 00c[0m Setting rocksdb maxLogFileSize to 10485760
+13:18:50.450 [db] open -> INFO 00d[0m Setting rocksdb keepLogFileNum to 10
+13:18:50.732 [chaincode] NewChaincodeSupport -> INFO 00e[0m Chaincode support using peerAddress: 172.17.0.5:7051
+[36m13:18:50.734 [chaincode] NewChaincodeSupport -> DEBU 00f[0m Turn off keepalive(value 0)
+13:18:50.735 [sysccapi] RegisterSysCC -> INFO 010[0m system chaincode (noop,github.com/hyperledger/fabric/bddtests/syschaincode/noop) disabled
+[36m13:18:50.735 [nodeCmd] serve -> DEBU 011[0m Running as validating peer - making genesis block if needed
+13:18:50.736 [state] loadConfig -> INFO 012[0m Loading configurations...
+13:18:50.737 [state] loadConfig -> INFO 013[0m Configurations loaded. stateImplName=[buckettree], stateImplConfigs=map[bucketCacheSize:%!s(int=100) numBuckets:%!s(int=1000003) maxGroupingAtEachLevel:%!s(int=5)], deltaHistorySize=[500]
+13:18:50.737 [state] NewState -> INFO 014[0m Initializing state implementation [buckettree]
+13:18:50.737 [buckettree] initConfig -> INFO 015[0m configs passed during initialization = map[string]interface {}{"maxGroupingAtEachLevel":5, "bucketCacheSize":100, "numBuckets":1000003}
+13:18:50.738 [buckettree] initConfig -> INFO 016[0m Initializing bucket tree state implemetation with configurations &{maxGroupingAtEachLevel:5 lowestLevel:9 levelToNumBucketsMap:map[5:1601 3:65 6:8001 4:321 2:13 1:3 8:200001 7:40001 0:1 9:1000003] hashFunc:0xab4dc0}
+13:18:50.738 [buckettree] newBucketCache -> INFO 017[0m Constructing bucket-cache with max bucket cache size = [100] MBs
+13:18:50.738 [buckettree] loadAllBucketNodesFromDB -> INFO 018[0m Loaded buckets data in cache. Total buckets in DB = [0]. Total cache size:=0
+13:18:50.739 [genesis] func1 -> INFO 019[0m Creating genesis block.
+[36m13:18:50.739 [state] GetHash -> DEBU 01a[0m Enter - GetHash()
+[36m13:18:50.739 [buckettree] ComputeCryptoHash -> DEBU 01b[0m Enter - ComputeCryptoHash()
+[36m13:18:50.739 [buckettree] ComputeCryptoHash -> DEBU 01c[0m Returing existing crypto-hash as recomputation not required
+[36m13:18:50.740 [state] GetHash -> DEBU 01d[0m Exit - GetHash()
+[36m13:18:50.740 [indexes] addIndexDataForPersistence -> DEBU 01e[0m Indexing block number [0] by hash = [46b9dd2b0ba88d13233b3feb743eeb243fcd52ea62b81b82b50c27646ed5762fd75dc4ddd8c0f200cb05019d67b592f6fc821c49479ab48640292eacb3b7c4be]
+[36m13:18:50.740 [state] AddChangesForPersistence -> DEBU 01f[0m state.addChangesForPersistence()...start
+[36m13:18:50.740 [state] AddChangesForPersistence -> DEBU 020[0m Adding state-delta corresponding to block number[0]
+[36m13:18:50.740 [state] AddChangesForPersistence -> DEBU 021[0m Not deleting previous state-delta. Block number [0] is smaller than historyStateDeltaSize [500]
+[36m13:18:50.740 [state] AddChangesForPersistence -> DEBU 022[0m state.addChangesForPersistence()...finished
+[36m13:18:50.741 [ledger] resetForNextTxGroup -> DEBU 023[0m resetting ledger state for next transaction batch
+[36m13:18:50.741 [buckettree] ClearWorkingSet -> DEBU 024[0m Enter - ClearWorkingSet()
+[36m13:18:50.742 [nodeCmd] serve -> DEBU 025[0m Running as validating peer - installing consensus 
+[36m13:18:50.743 [peer] initDiscovery -> DEBU 026[0m Retrieved discovery list from disk: []
+13:18:50.744 [consensus/controller] NewConsenter -> INFO 027[0m Creating consensus plugin pbft
+[36m13:18:50.744 [consensus/pbft] newObcBatch -> DEBU 028[0m Replica 3 obtaining startup information
+13:18:50.745 [consensus/pbft] newPbftCore -> INFO 029[0m PBFT type = *pbft.obcBatch
+13:18:50.745 [consensus/pbft] newPbftCore -> INFO 02a[0m PBFT Max number of validating peers (N) = 4
+13:18:50.746 [consensus/pbft] newPbftCore -> INFO 02b[0m PBFT Max number of failing peers (f) = 1
+13:18:50.746 [consensus/pbft] newPbftCore -> INFO 02c[0m PBFT byzantine flag = false
+13:18:50.746 [consensus/pbft] newPbftCore -> INFO 02d[0m PBFT request timeout = 10s
+13:18:50.746 [consensus/pbft] newPbftCore -> INFO 02e[0m PBFT view change timeout = 2s
+13:18:50.746 [consensus/pbft] newPbftCore -> INFO 02f[0m PBFT Checkpoint period (K) = 10
+13:18:50.746 [consensus/pbft] newPbftCore -> INFO 030[0m PBFT broadcast timeout = 1s
+13:18:50.746 [consensus/pbft] newPbftCore -> INFO 031[0m PBFT Log multiplier = 4
+13:18:50.746 [consensus/pbft] newPbftCore -> INFO 032[0m PBFT log size (L) = 40
+13:18:50.746 [consensus/pbft] newPbftCore -> INFO 033[0m PBFT null requests disabled
+13:18:50.747 [consensus/pbft] newPbftCore -> INFO 034[0m PBFT automatic view change disabled
+13:18:50.747 [consensus/pbft] restoreLastSeqNo -> INFO 035[0m Replica 3 restored lastExec: 0
+[36m13:18:50.747 [consensus/pbft] moveWatermarks -> DEBU 036[0m Replica 3 updated low watermark to 0
+13:18:50.747 [consensus/pbft] restoreState -> INFO 037[0m Replica 3 restored state: view: 0, seqNo: 0, pset: 0, qset: 0, reqBatches: 0, chkpts: 1 h: 0
+[36m13:18:50.747 [consensus/pbft] ProcessEvent -> DEBU 038[0m Replica 3 batch main thread looping
+[36m13:18:50.747 [consensus/pbft] ProcessEvent -> DEBU 039[0m Replica 3 processing event
+[36m13:18:50.747 [consensus/pbft] stateTransfer -> DEBU 03a[0m Replica 3 is out of sync, pending state transfer
+[36m13:18:50.748 [consensus/handler] InvalidateState -> DEBU 03b[0m Invalidating the current state
+[36m13:18:50.748 [consensus/pbft] retryStateTransfer -> DEBU 03c[0m Replica 3 is initiating state transfer to seqNo 0
+13:18:50.748 [consensus/pbft] newObcBatch -> INFO 03d[0m PBFT Batch size = 500
+13:18:50.748 [consensus/pbft] newObcBatch -> INFO 03e[0m PBFT Batch timeout = 1s
+[36m13:18:50.748 [consensus/executor] ProcessEvent -> DEBU 03f[0m Executor is processing a stateUpdateEvent
+13:18:50.748 [consensus/statetransfer] SyncToTarget -> INFO 040[0m Syncing to target 46b9dd2b0ba88d13233b3feb743eeb243fcd52ea62b81b82b50c27646ed5762fd75dc4ddd8c0f200cb05019d67b592f6fc821c49479ab48640292eacb3b7c4be for block number 0 with peers []
+13:18:50.748 [nodeCmd] serve -> INFO 041[0m Starting peer with ID=name:"vp3" , network ID=dev, address=172.17.0.5:7051, rootnodes=172.17.0.2:7051, validator=true
+[36m13:18:50.749 [consensus/statetransfer] verifyAndRecoverBlockchain -> DEBU 042[0m Validating existing blockchain, highest validated block is 0, valid through 0
+13:18:50.749 [consensus/statetransfer] blockThread -> INFO 043[0m Validated blockchain to the genesis block
+[36m13:18:50.750 [consensus/statetransfer] syncBlockchainToTarget -> DEBU 044[0m Processing a blockSyncReq to block 0 through 0
+[36m13:18:50.751 [consensus/statetransfer] syncBlockchainToTarget -> DEBU 045[0m Skipped remote syncing of block 0 through 0 because they were already present and valid
+[36m13:18:50.751 [consensus/statetransfer] syncBlockchainToTarget -> DEBU 046[0m Replying to blockSyncReq on reply channel with : %!s(<nil>)
+[36m13:18:50.751 [consensus/statetransfer] attemptStateTransfer -> DEBU 047[0m State transfer thread waiting for block sync to complete
+[36m13:18:50.752 [consensus/statetransfer] attemptStateTransfer -> DEBU 048[0m State transfer thread continuing
+[36m13:18:50.752 [state] GetHash -> DEBU 049[0m Enter - GetHash()
+[36m13:18:50.752 [buckettree] ComputeCryptoHash -> DEBU 04a[0m Enter - ComputeCryptoHash()
+[36m13:18:50.752 [buckettree] ComputeCryptoHash -> DEBU 04b[0m Returing existing crypto-hash as recomputation not required
+[36m13:18:50.752 [state] GetHash -> DEBU 04c[0m Exit - GetHash()
+[36m13:18:50.752 [consensus/statetransfer] attemptStateTransfer -> DEBU 04d[0m State is now valid at block 0 and hash 
+[36m13:18:50.752 [consensus/statetransfer] SyncToTarget -> DEBU 04e[0m Sync to target 46b9dd2b0ba88d13233b3feb743eeb243fcd52ea62b81b82b50c27646ed5762fd75dc4ddd8c0f200cb05019d67b592f6fc821c49479ab48640292eacb3b7c4be for block number 0 returned, now at block height 1 with err=<nil> recoverable=true
+[36m13:18:50.752 [consensus/executor] ProcessEvent -> DEBU 04f[0m State transfer sync completed, returning
+[36m13:18:50.752 [consensus/pbft] ProcessEvent -> DEBU 050[0m Replica 3 batch main thread looping
+[36m13:18:50.753 [consensus/pbft] ProcessEvent -> DEBU 051[0m Replica 3 processing event
+13:18:50.753 [consensus/pbft] ProcessEvent -> INFO 052[0m Replica 3 application caught up via state transfer, lastExec now 0
+[36m13:18:50.753 [consensus/pbft] moveWatermarks -> DEBU 053[0m Replica 3 updated low watermark to 0
+[36m13:18:50.753 [consensus/handler] ValidateState -> DEBU 054[0m Validating the current state
+[36m13:18:50.753 [consensus/pbft] Checkpoint -> DEBU 055[0m Replica 3 preparing checkpoint for view=0/seqNo=0 and b64 id of CAESQEa53SsLqI0TIzs/63Q+6yQ/zVLqYrgbgrUMJ2Ru1XYv113E3djA8gDLBQGdZ7WS9vyCHElHmrSGQCkurLO3xL4=
+[36m13:18:50.753 [consensus/pbft] recvCheckpoint -> DEBU 056[0m Replica 3 received checkpoint from replica 3, seqNo 0, digest CAESQEa53SsLqI0TIzs/63Q+6yQ/zVLqYrgbgrUMJ2Ru1XYv113E3djA8gDLBQGdZ7WS9vyCHElHmrSGQCkurLO3xL4=
+[36m13:18:50.753 [consensus/pbft] recvCheckpoint -> DEBU 057[0m Checkpoint sequence number outside watermarks: seqNo 0, low-mark 0
+[36m13:18:50.754 [consensus/statetransfer] verifyAndRecoverBlockchain -> DEBU 058[0m Validating existing blockchain, highest validated block is 0, valid through 0
+13:18:50.754 [consensus/statetransfer] blockThread -> INFO 059[0m Validated blockchain to the genesis block
+[36m13:18:50.754 [consensus/pbft] executeOutstanding -> DEBU 05a[0m Replica 3 attempting to executeOutstanding
+[36m13:18:50.754 [consensus/pbft] executeOutstanding -> DEBU 05b[0m Replica 3 certstore map[]
+[36m13:18:50.754 [peer] chatWithPeer -> DEBU 05c[0m Initiating Chat with peer address: 172.17.0.2:7051
+[36m13:18:50.755 [consensus/handler] 1 -> DEBU 05d[0m Starting up message thread for consenter
+[36m13:18:50.756 [peer] ensureConnected -> DEBU 05e[0m Starting Peer reconnect service (touch service), with period = 6s
+[36m13:18:50.756 [peer] chatWithPeer -> DEBU 05f[0m Established Chat with peer address: 172.17.0.2:7051
+[36m13:18:50.756 [peer] handleChat -> DEBU 060[0m Current context deadline = 0001-01-01 00:00:00 +0000 UTC, ok = false
+[36m13:18:50.758 [peer] SendMessage -> DEBU 061[0m Sending message to stream of type: DISC_HELLO 
+13:18:50.759 [rest] StartOpenchainRESTServer -> INFO 062[0m Initializing the REST service on 0.0.0.0:7050, TLS is disabled.
+[36m13:18:50.760 [consensus/handler] HandleMessage -> DEBU 063[0m Did not handle message of type DISC_HELLO, passing on to next MessageHandler
+[36m13:18:50.760 [peer] HandleMessage -> DEBU 064[0m Handling Message of type: DISC_HELLO 
+[36m13:18:50.760 [peer] beforeHello -> DEBU 065[0m Received DISC_HELLO, parsing out Peer identification
+[36m13:18:50.760 [peer] beforeHello -> DEBU 066[0m Received DISC_HELLO from endpoint=peerEndpoint:<ID:<name:"vp0" > address:"172.17.0.2:7051" type:VALIDATOR > blockchainInfo:<height:1 currentBlockHash:"F\271\335+\013\250\215\023#;?\353t>\353$?\315R\352b\270\033\202\265\014'dn\325v/\327]\304\335\330\300\362\000\313\005\001\235g\265\222\366\374\202\034IG\232\264\206@).\254\263\267\304\276" > 
+[36m13:18:50.761 [peer] RegisterHandler -> DEBU 067[0m registered handler with key: name:"vp0" 
+[36m13:18:50.761 [peer] enterState -> DEBU 068[0m The Peer's bi-directional stream to ID:<name:"vp0" > address:"172.17.0.2:7051" type:VALIDATOR  is established, from event DISC_HELLO
+[36m13:18:50.761 [peer] start -> DEBU 069[0m Starting Peer discovery service
+[36m13:18:53.701 [peer] handleChat -> DEBU 06a[0m Current context deadline = 0001-01-01 00:00:00 +0000 UTC, ok = false
+[36m13:18:53.703 [consensus/handler] HandleMessage -> DEBU 06b[0m Did not handle message of type DISC_HELLO, passing on to next MessageHandler
+[36m13:18:53.703 [peer] HandleMessage -> DEBU 06c[0m Handling Message of type: DISC_HELLO 
+[36m13:18:53.704 [peer] beforeHello -> DEBU 06d[0m Received DISC_HELLO, parsing out Peer identification
+[36m13:18:53.704 [peer] beforeHello -> DEBU 06e[0m Received DISC_HELLO from endpoint=peerEndpoint:<ID:<name:"vp1" > address:"172.17.0.3:7051" type:VALIDATOR > blockchainInfo:<height:1 currentBlockHash:"F\271\335+\013\250\215\023#;?\353t>\353$?\315R\352b\270\033\202\265\014'dn\325v/\327]\304\335\330\300\362\000\313\005\001\235g\265\222\366\374\202\034IG\232\264\206@).\254\263\267\304\276" > 
+[36m13:18:53.704 [peer] beforeHello -> DEBU 06f[0m Received DISC_HELLO, sending back DISC_HELLO
+[36m13:18:53.705 [peer] SendMessage -> DEBU 070[0m Sending message to stream of type: DISC_HELLO 
+[36m13:18:53.706 [peer] RegisterHandler -> DEBU 071[0m registered handler with key: name:"vp1" 
+[36m13:18:53.707 [peer] enterState -> DEBU 072[0m The Peer's bi-directional stream to ID:<name:"vp1" > address:"172.17.0.3:7051" type:VALIDATOR  is established, from event DISC_HELLO
+[36m13:18:53.707 [peer] start -> DEBU 073[0m Starting Peer discovery service
+[36m13:18:54.768 [peer] handleChat -> DEBU 074[0m Current context deadline = 0001-01-01 00:00:00 +0000 UTC, ok = false
+[36m13:18:54.769 [consensus/handler] HandleMessage -> DEBU 075[0m Did not handle message of type DISC_HELLO, passing on to next MessageHandler
+[36m13:18:54.770 [peer] HandleMessage -> DEBU 076[0m Handling Message of type: DISC_HELLO 
+[36m13:18:54.770 [peer] beforeHello -> DEBU 077[0m Received DISC_HELLO, parsing out Peer identification
+[36m13:18:54.770 [peer] beforeHello -> DEBU 078[0m Received DISC_HELLO from endpoint=peerEndpoint:<ID:<name:"vp2" > address:"172.17.0.4:7051" type:VALIDATOR > blockchainInfo:<height:1 currentBlockHash:"F\271\335+\013\250\215\023#;?\353t>\353$?\315R\352b\270\033\202\265\014'dn\325v/\327]\304\335\330\300\362\000\313\005\001\235g\265\222\366\374\202\034IG\232\264\206@).\254\263\267\304\276" > 
+[36m13:18:54.770 [peer] beforeHello -> DEBU 079[0m Received DISC_HELLO, sending back DISC_HELLO
+[36m13:18:54.771 [peer] SendMessage -> DEBU 07a[0m Sending message to stream of type: DISC_HELLO 
+[36m13:18:54.771 [peer] RegisterHandler -> DEBU 07b[0m registered handler with key: name:"vp2" 
+[36m13:18:54.771 [peer] enterState -> DEBU 07c[0m The Peer's bi-directional stream to ID:<name:"vp2" > address:"172.17.0.4:7051" type:VALIDATOR  is established, from event DISC_HELLO
+[36m13:18:54.772 [peer] start -> DEBU 07d[0m Starting Peer discovery service
+[36m13:18:55.761 [consensus/handler] HandleMessage -> DEBU 07e[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:18:55.761 [peer] HandleMessage -> DEBU 07f[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:18:55.761 [peer] beforeGetPeers -> DEBU 080[0m Sending back DISC_PEERS
+[36m13:18:55.761 [peer] SendMessage -> DEBU 081[0m Sending message to stream of type: DISC_PEERS 
+[36m13:18:55.762 [peer] SendMessage -> DEBU 082[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:18:55.764 [consensus/handler] HandleMessage -> DEBU 083[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:18:55.765 [peer] HandleMessage -> DEBU 084[0m Handling Message of type: DISC_PEERS 
+[36m13:18:55.765 [peer] beforePeers -> DEBU 085[0m Received DISC_PEERS, grabbing peers message
+[36m13:18:55.766 [peer] beforePeers -> DEBU 086[0m Received PeersMessage with Peers: peers:<ID:<name:"vp1" > address:"172.17.0.3:7051" type:VALIDATOR > peers:<ID:<name:"vp2" > address:"172.17.0.4:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > 
+[36m13:18:56.758 [peer] ensureConnected -> DEBU 087[0m Touch service indicates no dropped connections
+[36m13:18:56.758 [peer] ensureConnected -> DEBU 088[0m Connected to: [172.17.0.3:7051 172.17.0.4:7051 172.17.0.2:7051]
+[36m13:18:56.759 [peer] ensureConnected -> DEBU 089[0m Discovery knows about: [172.17.0.4:7051 172.17.0.2:7051 172.17.0.3:7051]
+[36m13:18:58.707 [peer] SendMessage -> DEBU 08a[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:18:58.708 [consensus/handler] HandleMessage -> DEBU 08b[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:18:58.708 [peer] HandleMessage -> DEBU 08c[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:18:58.708 [peer] beforeGetPeers -> DEBU 08d[0m Sending back DISC_PEERS
+[36m13:18:58.708 [peer] SendMessage -> DEBU 08e[0m Sending message to stream of type: DISC_PEERS 
+[36m13:18:58.708 [consensus/handler] HandleMessage -> DEBU 08f[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:18:58.708 [peer] HandleMessage -> DEBU 090[0m Handling Message of type: DISC_PEERS 
+[36m13:18:58.708 [peer] beforePeers -> DEBU 091[0m Received DISC_PEERS, grabbing peers message
+[36m13:18:58.708 [peer] beforePeers -> DEBU 092[0m Received PeersMessage with Peers: peers:<ID:<name:"vp0" > address:"172.17.0.2:7051" type:VALIDATOR > peers:<ID:<name:"vp2" > address:"172.17.0.4:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > 
+[36m13:18:59.772 [peer] SendMessage -> DEBU 093[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:18:59.772 [consensus/handler] HandleMessage -> DEBU 094[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:18:59.772 [peer] HandleMessage -> DEBU 095[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:18:59.772 [peer] beforeGetPeers -> DEBU 096[0m Sending back DISC_PEERS
+[36m13:18:59.772 [peer] SendMessage -> DEBU 097[0m Sending message to stream of type: DISC_PEERS 
+[36m13:18:59.773 [consensus/handler] HandleMessage -> DEBU 098[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:18:59.773 [peer] HandleMessage -> DEBU 099[0m Handling Message of type: DISC_PEERS 
+[36m13:18:59.773 [peer] beforePeers -> DEBU 09a[0m Received DISC_PEERS, grabbing peers message
+[36m13:18:59.773 [peer] beforePeers -> DEBU 09b[0m Received PeersMessage with Peers: peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > peers:<ID:<name:"vp0" > address:"172.17.0.2:7051" type:VALIDATOR > peers:<ID:<name:"vp1" > address:"172.17.0.3:7051" type:VALIDATOR > 
+[36m13:19:00.763 [peer] SendMessage -> DEBU 09c[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:19:00.763 [consensus/handler] HandleMessage -> DEBU 09d[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:19:00.763 [peer] HandleMessage -> DEBU 09e[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:19:00.764 [peer] beforeGetPeers -> DEBU 09f[0m Sending back DISC_PEERS
+[36m13:19:00.764 [peer] SendMessage -> DEBU 0a0[0m Sending message to stream of type: DISC_PEERS 
+[36m13:19:00.765 [consensus/handler] HandleMessage -> DEBU 0a1[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:19:00.766 [peer] HandleMessage -> DEBU 0a2[0m Handling Message of type: DISC_PEERS 
+[36m13:19:00.766 [peer] beforePeers -> DEBU 0a3[0m Received DISC_PEERS, grabbing peers message
+[36m13:19:00.766 [peer] beforePeers -> DEBU 0a4[0m Received PeersMessage with Peers: peers:<ID:<name:"vp1" > address:"172.17.0.3:7051" type:VALIDATOR > peers:<ID:<name:"vp2" > address:"172.17.0.4:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > 
+[36m13:19:02.758 [peer] ensureConnected -> DEBU 0a5[0m Touch service indicates no dropped connections
+[36m13:19:02.759 [peer] ensureConnected -> DEBU 0a6[0m Connected to: [172.17.0.2:7051 172.17.0.3:7051 172.17.0.4:7051]
+[36m13:19:02.760 [peer] ensureConnected -> DEBU 0a7[0m Discovery knows about: [172.17.0.3:7051 172.17.0.4:7051 172.17.0.2:7051]
+[36m13:19:03.708 [consensus/handler] HandleMessage -> DEBU 0a8[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:19:03.708 [peer] HandleMessage -> DEBU 0a9[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:19:03.708 [peer] beforeGetPeers -> DEBU 0aa[0m Sending back DISC_PEERS
+[36m13:19:03.708 [peer] SendMessage -> DEBU 0ab[0m Sending message to stream of type: DISC_PEERS 
+[36m13:19:03.709 [peer] SendMessage -> DEBU 0ac[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:19:03.711 [consensus/handler] HandleMessage -> DEBU 0ad[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:19:03.711 [peer] HandleMessage -> DEBU 0ae[0m Handling Message of type: DISC_PEERS 
+[36m13:19:03.711 [peer] beforePeers -> DEBU 0af[0m Received DISC_PEERS, grabbing peers message
+[36m13:19:03.711 [peer] beforePeers -> DEBU 0b0[0m Received PeersMessage with Peers: peers:<ID:<name:"vp0" > address:"172.17.0.2:7051" type:VALIDATOR > peers:<ID:<name:"vp2" > address:"172.17.0.4:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > 
+[36m13:19:04.772 [peer] SendMessage -> DEBU 0b1[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:19:04.772 [consensus/handler] HandleMessage -> DEBU 0b2[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:19:04.772 [peer] HandleMessage -> DEBU 0b3[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:19:04.772 [peer] beforeGetPeers -> DEBU 0b4[0m Sending back DISC_PEERS
+[36m13:19:04.773 [peer] SendMessage -> DEBU 0b5[0m Sending message to stream of type: DISC_PEERS 
+[36m13:19:04.773 [consensus/handler] HandleMessage -> DEBU 0b6[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:19:04.773 [peer] HandleMessage -> DEBU 0b7[0m Handling Message of type: DISC_PEERS 
+[36m13:19:04.773 [peer] beforePeers -> DEBU 0b8[0m Received DISC_PEERS, grabbing peers message
+[36m13:19:04.773 [peer] beforePeers -> DEBU 0b9[0m Received PeersMessage with Peers: peers:<ID:<name:"vp0" > address:"172.17.0.2:7051" type:VALIDATOR > peers:<ID:<name:"vp1" > address:"172.17.0.3:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > 
+[36m13:19:05.762 [peer] SendMessage -> DEBU 0ba[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:19:05.762 [consensus/handler] HandleMessage -> DEBU 0bb[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:19:05.762 [peer] HandleMessage -> DEBU 0bc[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:19:05.762 [peer] beforeGetPeers -> DEBU 0bd[0m Sending back DISC_PEERS
+[36m13:19:05.762 [peer] SendMessage -> DEBU 0be[0m Sending message to stream of type: DISC_PEERS 
+[36m13:19:05.765 [consensus/handler] HandleMessage -> DEBU 0bf[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:19:05.765 [peer] HandleMessage -> DEBU 0c0[0m Handling Message of type: DISC_PEERS 
+[36m13:19:05.765 [peer] beforePeers -> DEBU 0c1[0m Received DISC_PEERS, grabbing peers message
+[36m13:19:05.765 [peer] beforePeers -> DEBU 0c2[0m Received PeersMessage with Peers: peers:<ID:<name:"vp1" > address:"172.17.0.3:7051" type:VALIDATOR > peers:<ID:<name:"vp2" > address:"172.17.0.4:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > 
+[36m13:19:08.708 [peer] SendMessage -> DEBU 0c3[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:19:08.709 [consensus/handler] HandleMessage -> DEBU 0c4[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:19:08.709 [peer] HandleMessage -> DEBU 0c5[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:19:08.709 [peer] beforeGetPeers -> DEBU 0c6[0m Sending back DISC_PEERS
+[36m13:19:08.709 [peer] SendMessage -> DEBU 0c7[0m Sending message to stream of type: DISC_PEERS 
+[36m13:19:08.711 [consensus/handler] HandleMessage -> DEBU 0c8[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:19:08.711 [peer] HandleMessage -> DEBU 0c9[0m Handling Message of type: DISC_PEERS 
+[36m13:19:08.711 [peer] beforePeers -> DEBU 0ca[0m Received DISC_PEERS, grabbing peers message
+[36m13:19:08.712 [peer] beforePeers -> DEBU 0cb[0m Received PeersMessage with Peers: peers:<ID:<name:"vp2" > address:"172.17.0.4:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > peers:<ID:<name:"vp0" > address:"172.17.0.2:7051" type:VALIDATOR > 
+[36m13:19:08.757 [peer] ensureConnected -> DEBU 0cc[0m Touch service indicates no dropped connections
+[36m13:19:08.757 [peer] ensureConnected -> DEBU 0cd[0m Connected to: [172.17.0.4:7051 172.17.0.2:7051 172.17.0.3:7051]
+[36m13:19:08.757 [peer] ensureConnected -> DEBU 0ce[0m Discovery knows about: [172.17.0.2:7051 172.17.0.3:7051 172.17.0.4:7051]
+[36m13:19:09.772 [peer] SendMessage -> DEBU 0cf[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:19:09.773 [consensus/handler] HandleMessage -> DEBU 0d0[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:19:09.773 [peer] HandleMessage -> DEBU 0d1[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:19:09.773 [peer] beforeGetPeers -> DEBU 0d2[0m Sending back DISC_PEERS
+[36m13:19:09.773 [peer] SendMessage -> DEBU 0d3[0m Sending message to stream of type: DISC_PEERS 
+[36m13:19:09.773 [consensus/handler] HandleMessage -> DEBU 0d4[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:19:09.773 [peer] HandleMessage -> DEBU 0d5[0m Handling Message of type: DISC_PEERS 
+[36m13:19:09.773 [peer] beforePeers -> DEBU 0d6[0m Received DISC_PEERS, grabbing peers message
+[36m13:19:09.773 [peer] beforePeers -> DEBU 0d7[0m Received PeersMessage with Peers: peers:<ID:<name:"vp0" > address:"172.17.0.2:7051" type:VALIDATOR > peers:<ID:<name:"vp1" > address:"172.17.0.3:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > 
+[36m13:19:10.767 [peer] SendMessage -> DEBU 0d8[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:19:10.768 [consensus/handler] HandleMessage -> DEBU 0d9[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:19:10.768 [peer] HandleMessage -> DEBU 0da[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:19:10.768 [peer] beforeGetPeers -> DEBU 0db[0m Sending back DISC_PEERS
+[36m13:19:10.768 [peer] SendMessage -> DEBU 0dc[0m Sending message to stream of type: DISC_PEERS 
+[36m13:19:10.769 [consensus/handler] HandleMessage -> DEBU 0dd[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:19:10.769 [peer] HandleMessage -> DEBU 0de[0m Handling Message of type: DISC_PEERS 
+[36m13:19:10.769 [peer] beforePeers -> DEBU 0df[0m Received DISC_PEERS, grabbing peers message
+[36m13:19:10.769 [peer] beforePeers -> DEBU 0e0[0m Received PeersMessage with Peers: peers:<ID:<name:"vp1" > address:"172.17.0.3:7051" type:VALIDATOR > peers:<ID:<name:"vp2" > address:"172.17.0.4:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > 
+[36m13:19:13.708 [consensus/handler] HandleMessage -> DEBU 0e1[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:19:13.708 [peer] HandleMessage -> DEBU 0e2[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:19:13.708 [peer] beforeGetPeers -> DEBU 0e3[0m Sending back DISC_PEERS
+[36m13:19:13.708 [peer] SendMessage -> DEBU 0e4[0m Sending message to stream of type: DISC_PEERS 
+[36m13:19:13.708 [peer] SendMessage -> DEBU 0e5[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:19:13.709 [consensus/handler] HandleMessage -> DEBU 0e6[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:19:13.709 [peer] HandleMessage -> DEBU 0e7[0m Handling Message of type: DISC_PEERS 
+[36m13:19:13.709 [peer] beforePeers -> DEBU 0e8[0m Received DISC_PEERS, grabbing peers message
+[36m13:19:13.709 [peer] beforePeers -> DEBU 0e9[0m Received PeersMessage with Peers: peers:<ID:<name:"vp0" > address:"172.17.0.2:7051" type:VALIDATOR > peers:<ID:<name:"vp2" > address:"172.17.0.4:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > 
+[36m13:19:14.758 [peer] ensureConnected -> DEBU 0ea[0m Touch service indicates no dropped connections
+[36m13:19:14.758 [peer] ensureConnected -> DEBU 0eb[0m Connected to: [172.17.0.4:7051 172.17.0.2:7051 172.17.0.3:7051]
+[36m13:19:14.758 [peer] ensureConnected -> DEBU 0ec[0m Discovery knows about: [172.17.0.2:7051 172.17.0.3:7051 172.17.0.4:7051]
+[36m13:19:14.772 [consensus/handler] HandleMessage -> DEBU 0ed[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:19:14.772 [peer] HandleMessage -> DEBU 0ee[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:19:14.772 [peer] beforeGetPeers -> DEBU 0ef[0m Sending back DISC_PEERS
+[36m13:19:14.772 [peer] SendMessage -> DEBU 0f0[0m Sending message to stream of type: DISC_PEERS 
+[36m13:19:14.773 [peer] SendMessage -> DEBU 0f1[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:19:14.774 [consensus/handler] HandleMessage -> DEBU 0f2[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:19:14.774 [peer] HandleMessage -> DEBU 0f3[0m Handling Message of type: DISC_PEERS 
+[36m13:19:14.774 [peer] beforePeers -> DEBU 0f4[0m Received DISC_PEERS, grabbing peers message
+[36m13:19:14.774 [peer] beforePeers -> DEBU 0f5[0m Received PeersMessage with Peers: peers:<ID:<name:"vp0" > address:"172.17.0.2:7051" type:VALIDATOR > peers:<ID:<name:"vp1" > address:"172.17.0.3:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > 
+[36m13:19:15.767 [peer] SendMessage -> DEBU 0f6[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:19:15.771 [consensus/handler] HandleMessage -> DEBU 0f7[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:19:15.771 [peer] HandleMessage -> DEBU 0f8[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:19:15.772 [peer] beforeGetPeers -> DEBU 0f9[0m Sending back DISC_PEERS
+[36m13:19:15.772 [peer] SendMessage -> DEBU 0fa[0m Sending message to stream of type: DISC_PEERS 
+[36m13:19:15.773 [consensus/handler] HandleMessage -> DEBU 0fb[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:19:15.773 [peer] HandleMessage -> DEBU 0fc[0m Handling Message of type: DISC_PEERS 
+[36m13:19:15.774 [peer] beforePeers -> DEBU 0fd[0m Received DISC_PEERS, grabbing peers message
+[36m13:19:15.775 [peer] beforePeers -> DEBU 0fe[0m Received PeersMessage with Peers: peers:<ID:<name:"vp1" > address:"172.17.0.3:7051" type:VALIDATOR > peers:<ID:<name:"vp2" > address:"172.17.0.4:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > 
+[36m13:19:18.708 [peer] SendMessage -> DEBU 0ff[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:19:18.710 [consensus/handler] HandleMessage -> DEBU 100[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:19:18.711 [peer] HandleMessage -> DEBU 101[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:19:18.711 [peer] beforeGetPeers -> DEBU 102[0m Sending back DISC_PEERS
+[36m13:19:18.711 [peer] SendMessage -> DEBU 103[0m Sending message to stream of type: DISC_PEERS 
+[36m13:19:18.713 [consensus/handler] HandleMessage -> DEBU 104[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:19:18.714 [peer] HandleMessage -> DEBU 105[0m Handling Message of type: DISC_PEERS 
+[36m13:19:18.714 [peer] beforePeers -> DEBU 106[0m Received DISC_PEERS, grabbing peers message
+[36m13:19:18.714 [peer] beforePeers -> DEBU 107[0m Received PeersMessage with Peers: peers:<ID:<name:"vp0" > address:"172.17.0.2:7051" type:VALIDATOR > peers:<ID:<name:"vp2" > address:"172.17.0.4:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > 
+[36m13:19:19.772 [peer] SendMessage -> DEBU 108[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:19:19.773 [consensus/handler] HandleMessage -> DEBU 109[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:19:19.773 [peer] HandleMessage -> DEBU 10a[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:19:19.773 [peer] beforeGetPeers -> DEBU 10b[0m Sending back DISC_PEERS
+[36m13:19:19.773 [peer] SendMessage -> DEBU 10c[0m Sending message to stream of type: DISC_PEERS 
+[36m13:19:19.774 [consensus/handler] HandleMessage -> DEBU 10d[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:19:19.774 [peer] HandleMessage -> DEBU 10e[0m Handling Message of type: DISC_PEERS 
+[36m13:19:19.774 [peer] beforePeers -> DEBU 10f[0m Received DISC_PEERS, grabbing peers message
+[36m13:19:19.774 [peer] beforePeers -> DEBU 110[0m Received PeersMessage with Peers: peers:<ID:<name:"vp0" > address:"172.17.0.2:7051" type:VALIDATOR > peers:<ID:<name:"vp1" > address:"172.17.0.3:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > 
+[36m13:19:20.762 [consensus/handler] HandleMessage -> DEBU 111[0m Did not handle message of type DISC_GET_PEERS, passing on to next MessageHandler
+[36m13:19:20.762 [peer] HandleMessage -> DEBU 112[0m Handling Message of type: DISC_GET_PEERS 
+[36m13:19:20.762 [peer] beforeGetPeers -> DEBU 113[0m Sending back DISC_PEERS
+[36m13:19:20.763 [peer] SendMessage -> DEBU 114[0m Sending message to stream of type: DISC_PEERS 
+[36m13:19:20.764 [peer] SendMessage -> DEBU 115[0m Sending message to stream of type: DISC_GET_PEERS 
+[36m13:19:20.764 [peer] ensureConnected -> DEBU 116[0m Touch service indicates no dropped connections
+[36m13:19:20.765 [peer] ensureConnected -> DEBU 117[0m Connected to: [172.17.0.2:7051 172.17.0.3:7051 172.17.0.4:7051]
+[36m13:19:20.766 [peer] ensureConnected -> DEBU 118[0m Discovery knows about: [172.17.0.2:7051 172.17.0.3:7051 172.17.0.4:7051]
+[36m13:19:20.767 [consensus/handler] HandleMessage -> DEBU 119[0m Did not handle message of type DISC_PEERS, passing on to next MessageHandler
+[36m13:19:20.767 [peer] HandleMessage -> DEBU 11a[0m Handling Message of type: DISC_PEERS 
+[36m13:19:20.767 [peer] beforePeers -> DEBU 11b[0m Received DISC_PEERS, grabbing peers message
+[36m13:19:20.768 [peer] beforePeers -> DEBU 11c[0m Received PeersMessage with Peers: peers:<ID:<name:"vp1" > address:"172.17.0.3:7051" type:VALIDATOR > peers:<ID:<name:"vp2" > address:"172.17.0.4:7051" type:VALIDATOR > peers:<ID:<name:"vp3" > address:"172.17.0.5:7051" type:VALIDATOR > 

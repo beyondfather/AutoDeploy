@@ -189,69 +189,69 @@ fi
 sleep 5
 ###########################################################################
 read -p $'If all peers are realy, please keydown \033[33m [Enter] \033[0m to continue : '
-
 export IFS="[|]"
 count=0;
-for var in `cat $settingfile` ; do
-    count=`expr $count + 1 `
-    if (( $count % 2 == 1 )) ; then continue ; fi
+if [[ $settingfile != "" ]] ; then
+    for var in `cat $settingfile` ; do
+        count=`expr $count + 1 `
+        if (( $count % 2 == 1 )) ; then continue ; fi
+        if [[ `echo $var |grep deploydirectory::` != "" ]] ; then
+            echo 4
+            deploydirectory=`echo $var |grep deploydirectory::|awk -F"::" '{print $2}'`;
+            echo "deploydirectory : "$deploydirectory
+        else
+            while read -p "In ./mychaincode,which directory to deploy ? :" deploydirectory;do if [[ $deploydirectory != "" ]] ; then break; fi done
+        fi
 
-    if [[ `echo $var |grep deploydirectory::` != "" ]] ; then
-        deploydirectory=`echo $var |grep deploydirectory::|awk -F"::" '{print $2}'`;
-        echo "deploydirectory : "$deploydirectory
-    else
-        while read -p "In ./mychaincode,which directory to deploy ? :" deploydirectory;do if [[ $deploydirectory != "" ]] ; then break; fi done
-    fi
-
-    
-    lang=`echo $var |grep lang::|awk -F"::" '{print $2}'`;
-    
-    if [[ $lang == "" ]] ; then
         
-        while read -p "what do you use lang (golang) : " lang ;do if [[ $lang != "" ]] ; then break; fi done
-    else
-        echo "lang : "$lang
-    fi
-
-
-    function=`echo $var |grep deployfunction::|awk -F"::" '{print $2}'`;
-    
-    if [[ $function == "" ]] ; then
+        lang=`echo $var |grep lang::|awk -F"::" '{print $2}'`;
         
-        while read -p "what do you use function : " function ;do if [[ $function != "" ]] ; then break; fi done
-    else
-        echo "function : "$function
-    fi
+        if [[ $lang == "" ]] ; then
+            
+            while read -p "what do you use lang (golang) : " lang ;do if [[ $lang != "" ]] ; then break; fi done
+        else
+            echo "lang : "$lang
+        fi
 
 
-    args=`echo $var |grep deployargs::|awk -F"::" '{print $2}'`;
-    
-    if [[ $args == "" ]] ; then
+        function=`echo $var |grep deployfunction::|awk -F"::" '{print $2}'`;
         
-        while read -p "what do you use args : " args ;do if [[ $args != "" ]] ; then break; fi done
-    else
-        echo "args : "$args
-    fi
-    
+        if [[ $function == "" ]] ; then
+            
+            while read -p "what do you use function : " function ;do if [[ $function != "" ]] ; then break; fi done
+        else
+            echo "function : "$function
+        fi
 
 
-    if [[ "${lang}" == "java" ]] ; then
-        #JAVA lang run here
-        docker exec -it $containerID /bin/bash -c "peer chaincode deploy \\
-        -l java \\
-        -p ../../mychaincode/$deploydirectory \\
-        -c '{\"Function\":\""$function"\",\"Args\":["$args"]}'";
+        args=`echo $var |grep deployargs::|awk -F"::" '{print $2}'`;
+        
+        if [[ $args == "" ]] ; then
+            
+            while read -p "what do you use args : " args ;do if [[ $args != "" ]] ; then break; fi done
+        else
+            echo "args : "$args
+        fi
+        
+
+
+        if [[ "${lang}" == "java" ]] ; then
+            #JAVA lang run here
+            docker exec -it $containerID /bin/bash -c "peer chaincode deploy \\
+            -l java \\
+            -p ../../mychaincode/$deploydirectory \\
+            -c '{\"Function\":\""$function"\",\"Args\":["$args"]}'";
+            echo -e "\n";
+        else
+            #GO lang run here
+            docker exec -it $containerID peer chaincode deploy  \
+            -p github.com/mychaincode/$deploydirectory \
+            -c '{"Function":"'$function'", "Args": ['$args']}';
+            echo -e "\n";
+        fi
         echo -e "\n";
-    else
-        #GO lang run here
-        docker exec -it $containerID peer chaincode deploy  \
-        -p github.com/mychaincode/$deploydirectory \
-        -c '{"Function":"'$function'", "Args": ['$args']}';
-        echo -e "\n";
-    fi
-    echo -e "\n";
-done
-
+    done
+fi
 while ((1))
 do
     
